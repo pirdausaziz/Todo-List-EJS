@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Todo-List-Web-App</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <div class="box" id="heading">
+        <h1><%= listTitle %></h1>
+    </div>
+    <div class="box">
+        <!-- Looping through every item -->
+        <%newListsItems.forEach(function(item){%>
+            
+        <form action="/delete" method="POST">
+            <div class="item">
+                <input type="checkbox" name="kotak" value="<%= item._id%>" onChange="this.form.submit()">
+                <p><%= item %></p>
+            </div>
+            <input type="hidden" name="senaraiNama" value="<%= listTitle %>"></input>
+        </form>
+
+        <%})%>
+        <!-- End of Loop -->
+
+        <form class="item" action="/" method="POST">
+            <input type="text" name="newItem" placeholder="New Item" autocomplete="off" autofocus>
+            <button type="submit" name="list" value=<%= listTitle %>>+</button>
+        </form>
+    </div>
+</body>
+
+</html>
